@@ -4,8 +4,8 @@
 
   <span class="app-toolbar-filler"></span>
 
-  <button md-button routerLink="home">Home</button>
-  <button md-button routerLink="courses">Classes</button>
+  <button md-button [routerLink]="['/home']">Home</button>
+  <button md-button [routerLink]="['/classes']">Classes</button>
 
 </md-toolbar>
 <router-outlet></router-outlet>
