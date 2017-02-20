@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, NavigationError } from '@angular/router';
 
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
@@ -22,7 +22,9 @@ import { ClassesComponent } from './classes/classes.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {
+      enableTracing: true
+    }),
 
     MaterialModule.forRoot()
   ],
