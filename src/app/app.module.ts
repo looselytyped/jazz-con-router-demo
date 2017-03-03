@@ -12,6 +12,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClassesComponent } from './classes/classes.component';
 
+import {
+  RepoService,
+  ClassesResolver
+} from './shared'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,10 @@ import { ClassesComponent } from './classes/classes.component';
 
     MaterialModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    RepoService,
+    ClassesResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,6 +19,9 @@ export const routes: Routes = [
     component: ClassesComponent,
     data: {
       title: "Classes"
+    },
+    resolve: {
+      classes: ClassesResolver
     }
   },
   {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-classes',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassesComponent implements OnInit {
 
-  constructor() { }
+  constructor(r: ActivatedRoute) {
+    r.data.subscribe((d) => {
+      console.log('data->', d);
+    });
+  }
 
   ngOnInit() {
   }
