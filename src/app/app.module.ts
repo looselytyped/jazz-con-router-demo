@@ -10,7 +10,7 @@ import 'hammerjs';
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ClassesComponent } from './classes/classes.component';
+import { ClassesComponent } from './classes';
 
 import {
   RepoService,
