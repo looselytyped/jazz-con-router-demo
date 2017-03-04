@@ -1,0 +1,87 @@
+{
+  "classes": [
+    {
+      "id": 1,
+      "name": "Math"
+    },
+    {
+      "id": 2,
+      "name": "Science & Engineering"
+    },
+    {
+      "id": 3,
+      "name": "Computing"
+    },
+    {
+      "id": 4,
+      "name": "Arts & Humanities"
+    }
+  ],
+  "descriptions": [
+    {
+      "id": 1,
+      "class_id": 1,
+      "description": "We dare you to not learn probability!"
+    },
+    {
+      "id": 2,
+      "class_id": 1,
+      "description": "Big fancy word? Don't worry. We will make it easy"
+    },
+    {
+      "id": 3,
+      "class_id": 1,
+      "description": "Learn to embrace algebra!"
+    },
+    {
+      "id": 4,
+      "class_id": 2,
+      "description": "Learn how chemistry makes life possible!"
+    },
+    {
+      "id": 5,
+      "class_id": 2,
+      "description": "Learn what matter is made of!"
+    },
+    {
+      "id": 6,
+      "class_id": 2,
+      "description": "Learn how electrons are organized in atoms!"
+    },
+    {
+      "id": 7,
+      "class_id": 3,
+      "description": "Learn how to program drawings, animations, and games"
+    },
+    {
+      "id": 8,
+      "class_id": 3,
+      "description": "Learn how we solve common problems in computer science"
+    },
+    {
+      "id": 9,
+      "class_id": 3,
+      "description": "Learn the basics of programming, making webpages"
+    },
+    {
+      "id": 10,
+      "class_id": 4,
+      "description": "Explore a world of classical music as a living tradition"
+    },
+    {
+      "id": 11,
+      "class_id": 4,
+      "description": "Learn US history"
+    },
+    {
+      "id": 12,
+      "class_id": 4,
+      "description": "Learn World history!"
+    },
+    {
+      "id": 13,
+      "class_id": 4,
+      "description": "Learn grammar!"
+    }
+  ]
+}
