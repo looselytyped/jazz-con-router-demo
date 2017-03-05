@@ -15,8 +15,6 @@ export class DescriptionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.data.pluck('descriptions')
-      .subscribe((n) => console.log("n", n))
     this.descriptions = this.route.data.pluck('descriptions');
   }
 
