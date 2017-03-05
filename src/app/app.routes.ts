@@ -1,10 +1,21 @@
-import { ClassesComponent } from './classes';
+import {
+  ClassesComponent,
+  ClassComponent
+} from './classes';
 import { HomeComponent } from './home/home.component';
-import { Routes } from '@angular/router';
+import { Routes, Route, ActivatedRouteSnapshot } from '@angular/router';
 
 import {
-  ClassesResolver
+  ClassesResolver,
+  RepoService
 } from './shared'
+
+export function classResolver(repo: RepoService) {
+  return (route: ActivatedRouteSnapshot) => {
+    return repo.getClass(+route.params['id'])
+  }
+}
+
 
 export const routes: Routes = [
   {
@@ -22,7 +33,16 @@ export const routes: Routes = [
     },
     resolve: {
       classes: ClassesResolver
-    }
+    },
+    children: [
+      {
+        path: ':id',
+        component: ClassComponent,
+        resolve: {
+          class: 'classResolver'
+        }
+      }
+    ]
   },
   {
     path: '**',

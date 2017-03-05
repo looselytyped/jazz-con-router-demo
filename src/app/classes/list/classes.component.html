@@ -1,7 +1,14 @@
-<div>
-  <md-card class="link-card" *ngFor="let class of classes" [routerLink]="class.id">
-    <md-card-title>
-      {{class.name}}
-    </md-card-title>
-  </md-card>
-</div>
+<md-grid-list cols="2" class="classes">
+  <md-grid-tile [colspan]="1">
+    <div>
+      <md-card class="link-card" *ngFor="let class of classes" [routerLink]="class.id">
+        <md-card-title>
+          {{class.name}}
+        </md-card-title>
+      </md-card>
+    </div>
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1">
+    <router-outlet></router-outlet>
+  </md-grid-tile>
+</md-grid-list>

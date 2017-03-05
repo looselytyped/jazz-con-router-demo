@@ -1,3 +1,9 @@
-.link-card {
+.classes {
+  padding-top: 20px;
+}
+
+.classes >>> md-card {
+  cursor: pointer;
+  width: 400px;
   cursor: pointer
 }
