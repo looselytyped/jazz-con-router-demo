@@ -1,6 +1,7 @@
 import {
   ClassesComponent,
-  ClassComponent
+  ClassComponent,
+  DescriptionsComponent
 } from './classes';
 import { HomeComponent } from './home/home.component';
 import { Routes, Route, ActivatedRouteSnapshot } from '@angular/router';
@@ -16,6 +17,11 @@ export function classResolver(repo: RepoService) {
   }
 }
 
+export function descriptionsResolver(repo: RepoService) {
+  return (route: ActivatedRouteSnapshot) => {
+    return repo.getDescriptions(+route.params['id'])
+  }
+}
 
 export const routes: Routes = [
   {
@@ -37,10 +43,23 @@ export const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: ClassComponent,
-        resolve: {
-          class: 'classResolver'
-        }
+        children: [
+          {
+            path: '',
+            component: ClassComponent,
+            resolve: {
+              class: 'classResolver'
+            }
+          },
+          {
+            path: '',
+            component: DescriptionsComponent,
+            resolve: {
+              descriptions: 'descriptionsResolver'
+            },
+            outlet: 'descriptions'
+          }
+        ]
       }
     ]
   },

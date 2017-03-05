@@ -1,0 +1,12 @@
+<md-card>
+  <md-card-title>
+    Descriptions
+  </md-card-title>
+  <md-card-content>
+    <ul>
+      <li *ngFor="let d of descriptions | async">
+        {{d.description}}
+      </li>
+    </ul>
+  </md-card-content>
+</md-card>

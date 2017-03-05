@@ -1,7 +1,10 @@
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { Class } from './class.interface';
+import {
+  Class,
+  Description
+} from './../shared';
 
 const BASE_URL = 'http://localhost:3200';
 
@@ -20,4 +23,11 @@ export class RepoService {
       .map(res => res.json());
   }
 
+  getDescriptions(id: number): Observable<Array<Description>> {
+    return this.http.get(`${BASE_URL}/descriptions`)
+      .map(r => r.json())
+      .map(x => {
+        return x.filter(n => n['class_id'] == id);
+      });
+  }
 }

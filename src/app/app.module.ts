@@ -7,7 +7,7 @@ import { RouterModule, NavigationError } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
-import { routes, classResolver } from './app.routes';
+import { routes, classResolver, descriptionsResolver } from './app.routes';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import {
@@ -19,13 +19,15 @@ import {
   RepoService,
   ClassesResolver
 } from './shared';
+import { DescriptionsComponent } from './classes/list/descriptions/descriptions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ClassesComponent,
-    ClassComponent
+    ClassComponent,
+    DescriptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import {
     ClassesResolver,
     Title,
     { provide: 'classResolver', useFactory: classResolver, deps: [RepoService] },
+    { provide: 'descriptionsResolver', useFactory: descriptionsResolver, deps: [RepoService] },
   ],
   bootstrap: [AppComponent]
 })

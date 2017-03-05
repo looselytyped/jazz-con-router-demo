@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
-import { RepoService, Class } from './../../shared';
+import { Class } from './../../../shared';
 import { Component, OnInit } from '@angular/core';
 
 import 'rxjs/add/operator/pluck';
@@ -12,10 +12,10 @@ import 'rxjs/add/operator/pluck';
 export class ClassComponent implements OnInit {
   class: Observable<Class>;
   constructor(private route: ActivatedRoute) {
-    this.class = route.data.pluck('class');
   }
 
   ngOnInit() {
+    this.class = this.route.data.pluck('class');
   }
 
 }
