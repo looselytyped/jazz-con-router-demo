@@ -18,6 +18,32 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+const printer = (root) => {
+  const ret = {
+    component: root.component ? root.component.name : '',
+    url: root.url.value,
+    data: root.data.value,
+    params: root.params.value,
+    outlet: root.outlet,
+  }
+  const children = root.children.map(printer);
+  ret['children'] = children;
+  return ret;
+}
+
+var cache = [];
+const replacer = (key, value) => {
+  if (typeof value === 'object' && value !== null) {
+    if (cache.indexOf(value) !== -1) {
+      // Circular reference found, discard key
+      return;
+    }
+    // Store value in our collection
+    cache.push(value);
+  }
+  return value;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -56,7 +82,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.titleSub = sub.filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
       .map(route => {
-        while (route.firstChild) route = route.firstChild;
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
         return route;
       })
       .filter(route => route.outlet === 'primary')
@@ -65,6 +93,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // display
     this.navigationSub = sub.subscribe((e: Event) => {
+      // console.log(`###### ${e} ######`)
+      // console.log(JSON.stringify(printer(this.activatedRoute.root), replacer, 2));
+      // console.log("###### ------- ######")
       this.navigationInterceptor(e);
     });
   }
