@@ -4,8 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, NavigationError } from '@angular/router';
 
-import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
+import {
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
+  MatProgressSpinnerModule,
+  MatGridListModule,
+  MatButtonModule,
+} from '@angular/material';
 
 import { routes, classResolver, descriptionsResolver } from './app.routes';
 import { AppComponent } from './app.component';
@@ -31,13 +39,18 @@ import { DescriptionsComponent } from './classes/list/descriptions/descriptions.
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes, {
       enableTracing: true
     }),
-
-    MaterialModule.forRoot()
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatGridListModule,
+    MatButtonModule,
   ],
   providers: [
     RepoService,

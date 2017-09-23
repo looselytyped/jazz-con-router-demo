@@ -17,8 +17,9 @@ import { Title } from '@angular/platform-browser';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/share';
 
-const printer = (root) => {
+const printer = (root: any) => {
   const ret = {
     component: root.component ? root.component.name : '',
     url: root.url.value,
@@ -57,16 +58,18 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title)
-  { }
+    private titleService: Title) { }
 
   navigationInterceptor(event: Event): void {
-    this.loading = this.isStart(event) ? true : false;
+    if (this.isStart(event)) {
+      this.loading = true;
+    } else if (this.isEnd(event)) {
+      this.loading = false;
+    }
   }
 
   isStart(event: Event): boolean {
-    return event instanceof NavigationStart
-      || event instanceof RoutesRecognized;
+    return event instanceof NavigationStart;
   }
 
   isEnd(event: Event): boolean {
